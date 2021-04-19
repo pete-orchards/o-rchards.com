@@ -1,0 +1,138 @@
+・ロリポップ(メンテナンス時)
+SSH接続
+ssh babymilk.jp-megaron@ssh.lolipop.jp -p2222
+password:
+5mY09R07AUlh1NZo1PNHkf64kWVF0C9f
+ディレクトリ移動
+cd web/o-rchards
+マイグレーション
+/usr/local/php7.3/bin/php artisan migrate
+ロールバック
+/usr/local/php7.3/bin/php artisan migrate:rollback --step=1
+シーディング
+/usr/local/php7.3/bin/php artisan db:seed
+メンテナンスモード(チームメンバーはアクセス可能)
+/usr/local/php7.3/bin/php artisan down --allow=147.192.9.214 --allow=126.194.211.228
+メンテナンスモード解除
+/usr/local/php7.3/bin/php artisan up
+
+・FFFTP(ファイルアップロード)
+接続先を登録する
+
+・GitHub
+C:\Users\Pete\Documents\git\orchards
+gitリポジトリにプロジェクトをコピーしておく
+ssh github
+passwordを入力
+ディレクトリ移動
+cd C:\Users\Pete\Documents\git\orchards
+ブランチ切って移動
+git branch logYYYYMMdd(x.x.x) (必要ならバージョン情報)
+git checkout logYYYYMMdd(x.x.x)
+ブランチを確認
+git branch
+全ファイルをアド
+git add .
+アドできてるか確認
+git status
+全コミット
+git commit -a -m ""
+vimは:wqで抜ける
+git statusでアドしたファイルが消えてればOK
+git logでcommit情報
+プッシュ
+git push origin logYYYYMMdd(x.x.x)
+ブラウザに移動してプルリク→マージ
+
+・TailWindCSS
+laravelプロジェクトに移動
+cd C:\xampp\htdocs\o-rchards
+コンフィグ設定ファイル
+tailwind.config.js
+コンフィグを反映してビルド
+npm run dev
+※purgeCSSを使って未使用クラスを除いて圧縮をかける場合
+npm run prod
+
+・CSSリファクタリング(TailWindCSSへ)
+リセットcssについて:
+route/web.phpの上からビューファイルを編集していく
+20210225現状tailwindに書き換えられていないもの、修正が必要なもの
+	・ローディングの回転ホイール
+	・マイページのメニュー
+	・input:textの幅
+	/home 投稿フォームのinput幅
+
+・アプデ手順
+メンテ中のページを用意
+resouces\views\errors\503
+ニュースの内容を更新
+App\Http\View\Composers\NewsComposer
+ツイッターで告知
+ssh接続でメンテナンスモードへ
+FFFTPでアップロード
+必要ならマイグレート
+デバッグ
+メンテモード解除
+ツイッターで告知
+
+
+・リソースコントローラーを用いた新しいDBテーブル、モデル、CRUD等の実装
+artisanコマンドでコントローラー、モデル、マイグレーション、バリデーションリクエストを生成
+php artisan make:model NewItem -m
+php artisan make:controller NewItemController --resource --model=NewItem
+php artisan make:request NewItemRequest
+マイグレーション記述→実行
+php artisan migrate
+ルーティング routes/web.php
+Route::resource('newitem', 'NewItemController');
+モデル編集
+$fillable, $rules,(ソフトデリート)
+バリデーションリクエスト編集
+use App\NewItem; authorize(){return true;} rule(){return NewItem::$rules;}
+コントローラー編集
+use App\NewItem;　use App\Http\Requests\NewItemRequest;
+ビューファイルを作成
+
+・スタッフページのDB準備中...
+INSERT INTO `staffs`(`user_id`, `name`, `position`, `age`, `residence`, `comment`, `good_at`) 
+VALUES (
+	2,
+	'太田潤',
+	'企画者・実践者・脱森と猫の皿の主',
+	28,
+	'岐阜県恵那市',
+	'できるだけ沢山、面白いと思えるアイデアをかたちにしていけたらなと思います。',
+	'木工、猫の皿、絵画、田畑、YouTube'
+),(
+	2,
+	'ミカ',
+	'実践×移住×エッセイスト木工作家',
+	23,
+	'岐阜県恵那市',
+	'「リトルフォレスト」のような暮らしを求めて新卒で田舎に移住。つくる、食べる、ねむる。五感を使う、ただの生き物でありたい。',
+	'猫の皿　移住　木工　エッセイ'
+),(
+	2,
+	'ピート',
+	'3D系ミュージシャン系Web開発デザイン担当',
+	27,
+	'東京',
+	'本業は会社員(小売業)。2020年はレザークラフトを始めようとしたが、失敗。購入した道具は部屋の片隅のタイムカプセルで眠っているという。きっと来年の僕が使ってくれるだろう。',
+	'3Dモデリング(blender) VR クラリネット 動画編集 ファインアート'
+),(
+	2,
+	'おすし',
+	'Kawaiiグラフィッカープログラマ',
+	25,
+	'東京',
+	'本業は会社員。プログラマというポジションだがPythonしか使えない。最近CSSとPHPに触れ始めた。絵を描くのが好き。最近iPadを手に入れてとても楽しい。今年は2つ目のイラスト本を出したい。Youtubeもやってます。',
+	'イラスト　CG　動画編集　ギター　歌　食べ物　酒'
+);
+
+INSERT INTO `staff_columns`(`staff_id`, `title`, `body`) VALUES 
+(
+	1,
+	'■木工',
+	'主に木でいろいろ作っています。',
+),

@@ -1,0 +1,3 @@
+<div class="border-b border-r border-sepia-800 rounded-lg text-left relative z-3 hover:bg-brightness-125 js-basket" data-postid="{{ $post->id }}" data-userid="@auth{{Auth::id()}}@endauth"  data-csrftoken="{{ csrf_token() }}">
+	<img src="@auth @if($post->basket_check(Auth::id())) {{asset('img/basket-checked-tomato.svg')}} @else {{asset('img/basket-plus-w.svg')}} @endif @else{{asset('img/basket-plus-w.svg')}}@endauth" class="w-8 h-8 p-1 inline" alt="basket">
+</div>

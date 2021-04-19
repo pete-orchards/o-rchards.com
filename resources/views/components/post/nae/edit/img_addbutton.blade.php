@@ -1,0 +1,1 @@
+<span class="inline-block text-xl bg-gray-600 text-white rounded-lg py-1 px-4 m-1 hover:bg-gray-700 js-add-{{$type}}-img">画像を追加</span>

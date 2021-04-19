@@ -1,0 +1,1 @@
+<a class="absolute top-0 left-0 w-full h-full z-2" href="{{$post->$type->href()}}"></a>

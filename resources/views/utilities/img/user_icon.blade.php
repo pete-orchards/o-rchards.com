@@ -1,0 +1,1 @@
+<img class="{{$sizing ?? 'w-10 h-10'}} inline rounded-full border border-gray-400 {{$hover ?? 'hover:border-tomato-500'}}" src="{{$src}}"> 

@@ -1,0 +1,1 @@
+<a href="{{$href}}" class="inline-block text-md rounded-lg py-1 px-4 {{$color ?? 'bg-tomato-500'}} {{$text_color ?? 'text-white'}} hover:bg-opacity-75 {{$opt ?? ''}}">{{$text}}</a>

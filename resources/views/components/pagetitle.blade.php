@@ -1,0 +1,1 @@
+<h1 class="text-center text-4xl font-title normal-case font-normal my-5 mx-0">{{$title}}</h1>

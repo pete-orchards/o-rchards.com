@@ -1,0 +1,1 @@
+<input type="submit" value="{{$text}}" class="inline-block text-2xl rounded-lg py-4 px-8 {{$color ?? 'bg-tomato-500'}} {{$text_color ?? 'text-white'}} hover:bg-opacity-75" name="{{$btn_name ?? 'btn_submit'}}">

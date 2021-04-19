@@ -1,0 +1,28 @@
+@tailwind base; /* Preflight will be injected here */
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer utilities {
+	@responsive {
+		.visibility-auto {
+			content-visibility: auto;
+		}
+		.intrinsic-size-16 {
+			contain-intrinsic-size: 4rem;
+		}
+		.intrinsic-size-20 {
+			contain-intrinsic-size: 5rem;
+		}
+		.intrinsic-size-40 {
+			contain-intrinsic-size: 10rem;
+		}
+		.intrinsic-size-60 {
+			contain-intrinsic-size: 15rem;
+		}
+		.intrinsic-size-96 {
+			contain-intrinsic-size: 24rem;
+		}
+	}
+}

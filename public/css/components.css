@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/*
+
+カラー　
+レタスグリーン #d1de4c; rgb(209, 222, 76) ベースカラー、ナエ
+トマト #ff6347; rgb(255, 99, 71) ベースカラー、ミ
+アイボリー #f1efdd; rgb(241, 239, 221)　背景色
+コーヒー色 #7b5544;　タネ
+#432; rgb(68, 51, 34)　文字
+ホライズンブルー　#82cddd　収入
+サーモン　#fa8072　支出
+
+*/
+
+
+.dog-ears-fff-ff6347{
+  position:relative;
+  background: #6aa7cd;
+  padding: 1em;
+}
+.dog-ears-fff-ff6347:after{
+  content: "";
+  position:absolute;
+  top:0;
+  right:0;
+  width:0;
+  height:0;
+  border-style: solid;
+  border-color: transparent #fff #ff6347 transparent;
+  border-width: 0 20px 20px 0;
+}

@@ -1,0 +1,1 @@
+<a class="detail-link" href="{{$post->$type->href()}}" class="t-link"></a>

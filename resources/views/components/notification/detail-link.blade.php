@@ -1,0 +1,1 @@
+<a class="absolute w-full h-full z-2 top-0 left-0" href="{{$post->each()->href()}}"></a>

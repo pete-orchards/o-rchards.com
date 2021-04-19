@@ -1,0 +1,1 @@
+<div class="absolute -right-1 -top-1 h-6 w-6 flex justify-center items-center bg-tomato-500 text-white p-1 js-remove-{{$kind}}-container">×</div>
